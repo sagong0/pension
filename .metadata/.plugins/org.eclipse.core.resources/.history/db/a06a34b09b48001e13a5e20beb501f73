@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<header>
+<ul class="top_menu">
+    <li><img src="./img/menu.svg"></li>
+    <li onclick="location.href='./index.jsp';"><img src="./img/header_logo.png"></li>
+    <li onclick="login_pop();"><img src="./img/login.svg"></li>
+</ul>
+</header>
+<form>
+	<aside class="popup" id="popup" style="display:none;">
+		<div class="login">
+			<span class="close" onclick="pop_close();">X</span>
+			<p>MEMBER-LOGIN</p>
+			<ol>
+			<li><input type="text" class="login_input" id="mid" name="mid" placeholder="아이디를 입력하세요"></li>
+			<li><input type="password" class="login_input"id="mpw" name="mpw" placeholder="패스워드를 입력하세요"></li>
+			<li><label><input type="checkbox" id="mck" name="mck" class="login_check"> 자동로그인</label></li>
+			<li><input type="submit" value="로그인" class="login_btn"></li>
+			<li class="login_info">
+			<span onclick="page_location(1)">아이디 찾기</span>
+			<span onclick="page_location(2)">회원가입</span>
+			</li>
+			</ol>
+		</div>
+	</aside>
+</form>
+
+<script>
+	if(f.mid.value==""){
+		alert("아이디를 입력해주세요.");
+	}
+	else if(f.mpw.value==""){
+		alert("패스워드를 입력해주세요.");
+	}
+	else{
+		f.submit();
+	}
+</script>
+
