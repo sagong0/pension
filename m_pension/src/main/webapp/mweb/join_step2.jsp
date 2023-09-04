@@ -6,30 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>호텔 & 펜션 예약시스템</title>
-    <link rel="stylesheet" type="text/css" href="./css/m_index.css?v=1">
-    <link rel="stylesheet" type="text/css" href="./css/m_sub.css?v=1">
-    <script src="./js/m_index.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/m_index.css?v=2">
+    <link rel="stylesheet" type="text/css" href="./css/m_sub.css?v=2">
+    <script src="./js/m_index.js?v=2"></script>
 </head>
 <body>
 <!-- 상단 시작 -->
-<%@ include file="./top.jsp" %>
+<%@ include file="./top.jsp"%> 
 <!-- 상단 끝 -->
-<!-- 배너 시작 -->
-<!-- 배너 끝 -->
 <main>
-<%@ include file="./banner.jsp" %>
-<!-- 중단-->
+<!-- 배너 -->
+<%@ include file="./banner.jsp"%>
+<!-- 배너 끝-->
+<!-- 중단 -->
 <%@ include file="./join.jsp" %>
-<!-- 중단 끝-->
-<!-- 퀵 메뉴 -->
-<%@ include file="./qmenu.jsp" %>
-<!-- 퀵 메뉴 끝-->
-</main>
 <!-- 하단 시작 -->
+<%@ include file="./qmenu.jsp" %>
+</main>
 <footer>
 <%@ include file="./copy.jsp" %>
 </footer>
-<!-- 하단 끝 -->
 </body>
-
 </html>

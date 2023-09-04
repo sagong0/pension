@@ -21,7 +21,7 @@ function page_location(n){
 		url = "./m_idsearch.html";
 	}
 	else if(n==2){
-		url = "./join_step.jsp";
+		url = "./m_join.html";
 	}
 	location.href = url;
 }
