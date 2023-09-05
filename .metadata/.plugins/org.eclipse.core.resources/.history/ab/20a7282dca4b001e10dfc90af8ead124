@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- 중단 -->
+<section>
+    <ol class="product" id="list">
+
+    </ol>
+</section>
+
+<script src="./js/ajax.js?v=1"></script>

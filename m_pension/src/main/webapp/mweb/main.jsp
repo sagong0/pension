@@ -7,4 +7,4 @@
     </ol>
 </section>
 
-<script src="./js/ajax.js?v=1"></script>
+<script src="./js/ajax.js?v=5"></script>

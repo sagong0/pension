@@ -34,11 +34,12 @@ window.onload=function(){
 					var s =0;
 					var htmlcode ="";
 					while(s < array["penson_product"].length){
+						var penson_name = array["penson_product"][s]["a_wktitle"].replaceAll(' ','&nbsp;');
 						htmlcode +=`
-						<li>
+						<li onclick=resv('`+penson_name+`','`+array["penson_product"][s]["a_wkpd"]+`')>
 							<div>
 								<span><img src="`+array["penson_product"][s]["a_wkimg"]+`"></span>
-								<span>`+array["penson_product"][s]["a_wktitle"]+`</span>
+								<span>`+ penson_name +`</span>
 								<span>`+Number(array["penson_product"][s]["a_wkpd"]).toLocaleString()+`원</span>
 							</div>
 						</li>
@@ -46,36 +47,19 @@ window.onload=function(){
 						s++;
 					}
 					html.innerHTML = htmlcode;
-					/*
-					for(f in array["penson_product"][s]){
-						//console.log(array["penson_product"][s][f]);	//배열 value값 나옴
-						if(f =="a_wkimg"){
-							img = array["penson_product"][s][f];
-							html.innerHTML +=`<li><div><span><img src="${img}"></span></div></li>`;
-						}
-						else if(f == "a_wktitle"){
-							title = array["penson_product"][s][f];
-							html.innerHTML += `<li><div><span>${title}</span></div></li>`;
-						}
-					}
-					*/					
-				//}
-				/*
-		        <li>
-		            <div>
-		                <span><img src="./img/hotel_01.jpg"></span>
-		                <span>[강원 평창군] 한화리조트 평창</span>
-		                <span>165,600원</span>
-		            </div>
-		        </li>
-				*/
-												
+					
+																	
 			}
 		}
 		
 		data = wk();
 		data.onreadystatechange = file;
-		data.open("get","./data.json",true);
+		data.open("get","./data.json?v=1",true);
 		data.send();
-	}
+	}	
 }
+
+		function resv(nm,money){
+	
+			location.href ='./m_reservation.jsp?pnm='+encodeURI(nm)+'&pmoney='+money;
+		}

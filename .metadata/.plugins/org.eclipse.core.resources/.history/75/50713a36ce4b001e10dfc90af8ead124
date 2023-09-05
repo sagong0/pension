@@ -1,0 +1,87 @@
+window.onload=function(){
+	var product = document.getElementById("list");
+	
+	//console.log(product.innerText);
+	
+	if(product.innerText ==""){
+		ajax();	
+	}
+	
+	
+	
+	function ajax(){
+		var data;
+		
+		function wk(){
+			if(window.XMLHttpRequest){
+				return new XMLHttpRequest();
+			}
+		}
+		
+		function file(){
+			if(data.readyState == XMLHttpRequest.DONE && data.status == 200){
+				array = JSON.parse(this.response);
+				//console.log(array);
+				//console.log(array["penson_product"].length);//6
+				
+				var html = document.getElementById("list");
+				
+
+				//for(s in array["penson_product"]){
+					//console.log(s);	 //배열 인덱스 나옴.
+					//console.log(array["penson_product"][s]);	// 배열 하나씩 나옴
+					
+					var s =0;
+					var htmlcode ="";
+					while(s < array["penson_product"].length){
+						var penson_name = array["penson_product"][s]["a_wktitle"].replaceAll('강원','');
+						htmlcode +=`
+						<li onclick=resv(`+penson_name+`,"`+Number(array["penson_product"][s]["a_wkpd"]).toLocaleString()+`")">
+							<div>
+								<span><img src="`+array["penson_product"][s]["a_wkimg"]+`"></span>
+								<span>`+ penson_name +`</span>
+								<span>`+Number(array["penson_product"][s]["a_wkpd"]).toLocaleString()+`원</span>
+							</div>
+						</li>
+						`;
+						s++;
+					}
+					html.innerHTML = htmlcode;
+					
+					
+					/*
+					for(f in array["penson_product"][s]){
+						//console.log(array["penson_product"][s][f]);	//배열 value값 나옴
+						if(f =="a_wkimg"){
+							img = array["penson_product"][s][f];
+							html.innerHTML +=`<li><div><span><img src="${img}"></span></div></li>`;
+						}
+						else if(f == "a_wktitle"){
+							title = array["penson_product"][s][f];
+							html.innerHTML += `<li><div><span>${title}</span></div></li>`;
+						}
+					}
+					*/					
+				//}
+				/*
+		        <li>
+		            <div>
+		                <span><img src="./img/hotel_01.jpg"></span>
+		                <span>[강원 평창군] 한화리조트 평창</span>
+		                <span>165,600원</span>
+		            </div>
+		        </li>
+				*/
+												
+			}
+		}
+		
+		data = wk();
+		data.onreadystatechange = file;
+		data.open("get","./data.json",true);
+		data.send();
+	}
+		function resv(nm,money){
+			location.href ='./m_reservation.jsp?pnm='+encodeURI(nm)+'&pmoney='+money;
+		}
+}
